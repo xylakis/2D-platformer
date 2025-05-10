@@ -34,20 +34,32 @@ public class PlayerMove : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (isGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            if (context.performed)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            }
+            else if (context.canceled)
+            {
 
-        }
-        else if (context.canceled) {
-
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y*0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
         }
     }
 
+    private bool isGrounded()
+    {
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        {
+            return true;
+        }
+        return false;
+    } 
+
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.red;
         Gizmos.DrawCube(groundCheckPos.position, groundCheckSize);
     }
 }

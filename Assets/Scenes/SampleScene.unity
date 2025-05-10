@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 1381352183}
   - component: {fileID: 1381352185}
   - component: {fileID: 1381352186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2329,10 +2329,10 @@ MonoBehaviour:
   moveSpeed: 5
   jumpPower: 10
   groundCheckPos: {fileID: 1197614453}
-  groundCheckSize: {x: 0.5, y: 0.05}
+  groundCheckSize: {x: 0.5, y: 0.15}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &1568584191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,7 +2451,7 @@ GameObject:
   - component: {fileID: 1733443381}
   - component: {fileID: 1733443383}
   - component: {fileID: 1733443384}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
