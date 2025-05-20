@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask wallLayer;
 
-    // Update is called once per frame
+    // Update is called once per frame testing
     void Update()
     {
         rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
@@ -73,8 +73,8 @@ public class PlayerMove : MonoBehaviour
         {
             jumpsRemaining = 1;
         }
-    } 
-
+    }
+    
     private void Flip()
     {
         if (isFacingRight && horizontalMovement <0 || !isFacingRight && horizontalMovement > 0)
