@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 
     public Rigidbody2D rb;
     bool isFacingRight  = true;
+
+    public Animator animator;
     
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -36,12 +38,17 @@ public class PlayerMove : MonoBehaviour
         GroundCheck();
 
         Flip();
+
+        animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetFloat("Magnitude", rb.velocity.magnitude);
+
+        Debug.Log(rb.velocity.y);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
-        Debug.Log(horizontalMovement);
+        //Debug.Log(horizontalMovement);
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -52,12 +59,15 @@ public class PlayerMove : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 jumpsRemaining--;
+
+                animator.SetTrigger("Jump");
             }
-            else if (context.canceled)
+            else if (context.canceled && rb.velocity.y>0)
             {
 
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 jumpsRemaining--;
+                animator.SetTrigger("Jump");
             }
         }
     }
